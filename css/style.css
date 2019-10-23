@@ -1,0 +1,29 @@
+.sp-ab {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.text-stst {
+	font-size: 0.7rem;
+	font-family: 'Tahoma';
+	text-transform: uppercase;
+
+	transform: rotate(-20deg);
+	/* Safari */
+	-webkit-transform: rotate(-20deg);
+	/* Firefox */
+	-moz-transform: rotate(-20deg);
+	/* IE */
+	-ms-transform: rotate(-20deg);
+	/* Opera */
+	-o-transform: rotate(-20deg);
+	/* Internet Explorer */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}

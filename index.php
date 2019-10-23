@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Watermark</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+        <p class="img-cover">
+            <img src="images/01.jpg" width="400" alt="">
+        </p>
+        <p class="img-cover">
+            <img src="images/02.jpg" width="400" alt="">
+        </p>
+        <p class="img-cover">
+            <img src="images/03.jpg" width="400" alt="">
+        </p>
+        <p class="img-cover">
+            <img src="images/04.jpg" width="400" alt="">
+        </p>
+
+        <script type="application/javascript" src="js/jquery.min.js"></script>
+        <script>
+            var shutterstocks = ['images/02.jpg', 'images/03.jpg'];
+            var water_mark_inner = '<div class="text-stst">-- Shutterstock --</div>';
+                water_mark_inner += '<div class="text-stst">-- Shutterstock --</div>';
+
+            $(document).ready(function() {
+                const imgList = $('img');
+
+                if (imgList.length > 0) {
+                    let this_img = null;
+                    let src = '';
+                    let wh = '';
+                    let w = 0;
+                    let h = 0;
+
+                    $.each(imgList, function (idx, val) {
+                        // console.log(idx, val, $(this).attr("src"));
+                        this_img = $(this);
+                        src = this_img.attr('src');
+
+                        if (idx == (imgList.length - 1)) {
+                            $(this).hide();
+                        } else {
+                            if ($.inArray(src, shutterstocks) !== -1) {
+                                genWatermark(this_img, wh, val);
+                            }
+                        }
+                    });
+                }
+            });
+
+            function genWatermark(this_img, wh, val) {
+                w = val.width;
+                h = val.height;
+                wh = 'width:' + w + 'px;height:' + h + 'px;';
+
+                this_img.parent().css('position', 'relative');
+                this_img.parent().append('<div class="sp-ab" style="' + wh +'">' + water_mark_inner + '</div>');
+            }
+        </script>
+    </body>
+</html>
